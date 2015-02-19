@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1
            listbox[indexlist].SelectionMode = SelectionMode.One;
            this.listbox[indexlist].Click += new System.EventHandler(this.listbox_Click);
            tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-           Wyszukaniestrony("");
+           Wyszukaniestrony(textBox1.Text,"");
            
         }
 
@@ -56,13 +56,13 @@ namespace WindowsFormsApplication1
         }
 
 
-        public void Wyszukaniestrony(String s)
+        public void Wyszukaniestrony(String wysz,String dodatki)
         {
             try
             {
                 
                 WebClient w = new WebClient();
-                string page = w.DownloadString(p + zamiananaHTML() + k + s);
+                string page = w.DownloadString(p + zamiananaHTML(wysz) + k + dodatki);
                 string name = "href=\"http://h+(.*?)\">+(.*?).mp3";
                 foreach (Match match in Regex.Matches(page, name))
                 {
@@ -93,11 +93,11 @@ namespace WindowsFormsApplication1
                 label1.Text = "Ilość piosenek wynosi = " + listbox[indexlist].Items.Count.ToString();
                 if (index[tabControl1.SelectedIndex] > 0)
                 {
-                    label2.Text = p + zamiananaHTML() + k + "&strona=" + index[tabControl1.SelectedIndex];
+                    label2.Text = p + zamiananaHTML(wysz) + k + "&strona=" + index[tabControl1.SelectedIndex];
                 }
                 else
                 {
-                    label2.Text = p + zamiananaHTML() + k ;
+                    label2.Text = p + zamiananaHTML(wysz) + k;
                 }
             }
             catch (Exception ex)
@@ -110,12 +110,12 @@ namespace WindowsFormsApplication1
             Form2 f = new Form2(linki[tabControl1.SelectedIndex][listbox[tabControl1.SelectedIndex].SelectedIndex].ToString());
             f.Show();
         }
-        private string zamiananaHTML()
+        private string zamiananaHTML(String s)
         {
             string wysz = "";
-            for (int i = 0; i < textBox1.Text.Length; i++)
+            for (int i = 0; i < s.Length; i++)
             {
-                switch (textBox1.Text[i])
+                switch (s[i])
                 {
                     case ' ': wysz += "%20"; break;
                     case '!': wysz += "%21"; break;
@@ -165,7 +165,7 @@ namespace WindowsFormsApplication1
                     case 'ę': wysz += "%EA"; break;
                     case 'ń': wysz += "%F1"; break;
                     case 'ó': wysz += "%F3"; break;
-                    default: wysz += textBox1.Text[i]; break;
+                    default: wysz += s[i]; break;
                 }
 
             }
@@ -207,11 +207,11 @@ namespace WindowsFormsApplication1
                 index[tabControl1.SelectedIndex]--;
                 if (index[tabControl1.SelectedIndex] ==0)
                 {
-                    Wyszukaniestrony("");
+                    Wyszukaniestrony(tabControl1.SelectedTab.Text, "");
                 }
                 else
                 {
-                    Wyszukaniestrony("&strona=" + index[tabControl1.SelectedIndex].ToString());
+                    Wyszukaniestrony(tabControl1.SelectedTab.Text, "&strona=" + index[tabControl1.SelectedIndex].ToString());
                 }
             }
             if (index[tabControl1.SelectedIndex] == 0)
@@ -223,7 +223,7 @@ namespace WindowsFormsApplication1
         private void button4_Click(object sender, EventArgs e)
         {
                     index[tabControl1.SelectedIndex]++;
-                    Wyszukaniestrony("&strona=" + index[tabControl1.SelectedIndex].ToString());
+                    Wyszukaniestrony(tabControl1.SelectedTab.Text, "&strona=" + index[tabControl1.SelectedIndex].ToString());
                     if (index[tabControl1.SelectedIndex] > 0)
                     {
                         button3.Visible = true;
@@ -252,7 +252,37 @@ namespace WindowsFormsApplication1
                 listbox[indexlist].SelectionMode = SelectionMode.One;
                 this.listbox[indexlist].Click += new System.EventHandler(this.listbox_Click);
                 tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-                Wyszukaniestrony("");
+                Wyszukaniestrony(textBox1.Text,"");
+
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                String line ="";
+                StreamReader sr = new StreamReader(openFileDialog1.FileName);
+                while (sr.EndOfStream != true)
+                {
+                    line = sr.ReadLine();
+                    indexlist++;
+                    TabPage tabpage1 = new TabPage();
+                    tabpage1.Text = textBox1.Text;
+                    tabControl1.TabPages.Add(tabpage1);
+                    listbox.Add(new ListBox());
+                    listbox[indexlist].Dock = DockStyle.Fill;
+                    listbox[indexlist].ScrollAlwaysVisible = true;
+                    tabpage1.Controls.Add(listbox[indexlist]);
+                    linki.Add(new List<String>());
+                    index.Add(new int());
+                    index[index.Count - 1] = 0;
+                    tabControl1.SelectedTab = tabpage1;
+                    listbox[indexlist].SelectionMode = SelectionMode.One;
+                    this.listbox[indexlist].Click += new System.EventHandler(this.listbox_Click);
+                    tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+                    Wyszukaniestrony(line, "");
+                }
 
             }
         }
