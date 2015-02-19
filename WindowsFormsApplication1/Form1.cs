@@ -231,6 +231,34 @@ namespace WindowsFormsApplication1
          
         }
 
+
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                indexlist++;
+                TabPage tabpage1 = new TabPage();
+                tabpage1.Text = textBox1.Text;
+                tabControl1.TabPages.Add(tabpage1);
+                listbox.Add(new ListBox());
+                listbox[indexlist].Dock = DockStyle.Fill;
+                listbox[indexlist].ScrollAlwaysVisible = true;
+                tabpage1.Controls.Add(listbox[indexlist]);
+                linki.Add(new List<String>());
+                index.Add(new int());
+                index[index.Count - 1] = 0;
+                tabControl1.SelectedTab = tabpage1;
+                listbox[indexlist].SelectionMode = SelectionMode.One;
+                this.listbox[indexlist].Click += new System.EventHandler(this.listbox_Click);
+                tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+                Wyszukaniestrony("");
+
+            }
+        }
+
+       
+
       
 
      
