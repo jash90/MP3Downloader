@@ -50,9 +50,26 @@ namespace WindowsFormsApplication1
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TabControl t = (TabControl)sender;
-            indexlist = t.SelectedIndex;
-            label1.Text = "Ilość piosenek wynosi = " + listbox[indexlist].Items.Count.ToString();
+            try
+            {
+                TabControl t = (TabControl)sender;
+                if (t.SelectedIndex > -1)
+                {
+                    indexlist = t.SelectedIndex;
+                    label1.Text = "Ilość piosenek wynosi = " + listbox[indexlist].Items.Count.ToString();
+                }
+                else
+                {
+                    label1.Text = "";
+                    button4.Visible = false;
+                    label2.Text = "";
+                    toolStripStatusLabel1.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
