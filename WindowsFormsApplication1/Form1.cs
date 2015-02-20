@@ -268,7 +268,7 @@ namespace WindowsFormsApplication1
                     line = sr.ReadLine();
                     indexlist++;
                     TabPage tabpage1 = new TabPage();
-                    tabpage1.Text = textBox1.Text;
+                    tabpage1.Text = line;
                     tabControl1.TabPages.Add(tabpage1);
                     listbox.Add(new ListBox());
                     listbox[indexlist].Dock = DockStyle.Fill;
