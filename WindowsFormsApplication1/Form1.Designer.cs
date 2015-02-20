@@ -54,7 +54,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 56);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(740, 250);
+            this.tabControl1.Size = new System.Drawing.Size(759, 250);
             this.tabControl1.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -95,7 +95,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(315, 10);
+            this.button2.Location = new System.Drawing.Point(288, 10);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 23);
             this.button2.TabIndex = 3;
@@ -128,7 +128,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(438, 15);
+            this.label1.Location = new System.Drawing.Point(583, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 6;
@@ -147,7 +147,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 331);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(738, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(771, 22);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -162,7 +162,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(444, 10);
+            this.button5.Location = new System.Drawing.Point(388, 10);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(179, 23);
             this.button5.TabIndex = 9;
@@ -174,7 +174,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 353);
+            this.ClientSize = new System.Drawing.Size(771, 353);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label2);
