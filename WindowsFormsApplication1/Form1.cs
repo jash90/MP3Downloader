@@ -56,6 +56,7 @@ namespace WindowsFormsApplication1
                 if (t.SelectedIndex > -1)
                 {
                     indexlist = t.SelectedIndex;
+                    //indexlist--;
                     label1.Text = "Ilość piosenek wynosi = " + listbox[indexlist].Items.Count.ToString();
                 }
                 else
