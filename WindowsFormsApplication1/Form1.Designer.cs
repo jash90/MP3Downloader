@@ -158,7 +158,7 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "\"Pliki tekstowe|*.txt\"";
+            this.openFileDialog1.Filter = "Pliki tekstowe|*.txt";
             // 
             // button5
             // 

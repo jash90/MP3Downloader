@@ -40,11 +40,12 @@ namespace WindowsFormsApplication1
            linki.Add(new List<String>());
            index.Add(new int());
            index[index.Count - 1]=0;
-           tabControl1.SelectedTab = tabpage1;
+         
            listbox[indexlist].SelectionMode = SelectionMode.One;
            this.listbox[indexlist].Click += new System.EventHandler(this.listbox_Click);
            tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
            Wyszukaniestrony(textBox1.Text,"");
+           tabControl1.SelectedTab = tabpage1;
            
         }
 
@@ -56,8 +57,16 @@ namespace WindowsFormsApplication1
                 if (t.SelectedIndex > -1)
                 {
                     indexlist = t.SelectedIndex;
-                    //indexlist--;
                     label1.Text = "Ilość piosenek wynosi = " + listbox[indexlist].Items.Count.ToString();
+                    toolStripStatusLabel1.Text = (index[indexlist]+1).ToString() + " / " + (imax[indexlist]+1).ToString();
+                    if (index[indexlist] == imax[indexlist])
+                    {
+                        button4.Visible = false;
+                    }
+                    else
+                    {
+                        button4.Visible = true;
+                    }
                 }
                 else
                 {
@@ -106,7 +115,7 @@ namespace WindowsFormsApplication1
                     }
                 }
                 imax.Add(max);
-                toolStripStatusLabel1.Text = index[indexlist]+1.ToString() + " / " + imax[indexlist]+1.ToString();
+                toolStripStatusLabel1.Text = (index[indexlist]+1).ToString() + " / " + (imax[indexlist]+1).ToString();
                 button4.Visible=true;
                 label1.Text = "Ilość piosenek wynosi = " + listbox[indexlist].Items.Count.ToString();
                 if (index[tabControl1.SelectedIndex] > 0)
@@ -266,11 +275,11 @@ namespace WindowsFormsApplication1
                 linki.Add(new List<String>());
                 index.Add(new int());
                 index[index.Count - 1] = 0;
-                tabControl1.SelectedTab = tabpage1;
                 listbox[indexlist].SelectionMode = SelectionMode.One;
                 this.listbox[indexlist].Click += new System.EventHandler(this.listbox_Click);
                 tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
                 Wyszukaniestrony(textBox1.Text,"");
+                tabControl1.SelectedTab = tabpage1;
 
             }
         }
@@ -295,11 +304,11 @@ namespace WindowsFormsApplication1
                     linki.Add(new List<String>());
                     index.Add(new int());
                     index[index.Count - 1] = 0;
-                    tabControl1.SelectedTab = tabpage1;
                     listbox[indexlist].SelectionMode = SelectionMode.One;
                     this.listbox[indexlist].Click += new System.EventHandler(this.listbox_Click);
                     tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
                     Wyszukaniestrony(line, "");
+                    tabControl1.SelectedTab = tabpage1;
                 }
 
             }
