@@ -223,8 +223,7 @@ namespace WindowsFormsApplication1
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            tabControl1.TabPages.Remove(tabControl1.SelectedTab);
-            indexlist--;
+          
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -296,6 +295,7 @@ namespace WindowsFormsApplication1
                     indexlist++;
                     TabPage tabpage1 = new TabPage();
                     tabpage1.Text = line;
+                   
                     tabControl1.TabPages.Add(tabpage1);
                     listbox.Add(new ListBox());
                     listbox[indexlist].Dock = DockStyle.Fill;
@@ -312,8 +312,18 @@ namespace WindowsFormsApplication1
                 }
 
             }
+            
         }
 
+   
+
+    
+
+     
+     
+
+    
+      
        
 
       
